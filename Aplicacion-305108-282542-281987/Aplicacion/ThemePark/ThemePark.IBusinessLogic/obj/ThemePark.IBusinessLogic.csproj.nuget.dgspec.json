@@ -1,0 +1,152 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\ThemePark.IBusinessLogic.csproj": {}
+  },
+  "projects": {
+    "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj",
+        "projectName": "ThemePark.Domain",
+        "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj",
+        "packagesPath": "C:\\Users\\Nicob_86fbhyf\\.nuget\\packages\\",
+        "outputPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Nicob_86fbhyf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "target": "Package",
+              "version": "[1.2.0-beta.261, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\ThemePark.IBusinessLogic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\ThemePark.IBusinessLogic.csproj",
+        "projectName": "ThemePark.IBusinessLogic",
+        "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\ThemePark.IBusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\Nicob_86fbhyf\\.nuget\\packages\\",
+        "outputPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Nicob_86fbhyf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj": {
+                "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "target": "Package",
+              "version": "[1.2.0-beta.261, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

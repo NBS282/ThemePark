@@ -1,0 +1,55 @@
+<div class="reward-card" [class.unavailable]="!isAvailable()" [class.cant-afford]="!canAfford()">
+  <div class="reward-header">
+    <h3 class="reward-name">{{ reward().nombre }}</h3>
+    @if (!isAvailable()) {
+      <span class="badge-unavailable">No Disponible</span>
+    }
+    @if (isAvailable() && reward().cantidadDisponible <= 5) {
+      <span class="badge-limited">¡Últimas {{ reward().cantidadDisponible }}!</span>
+    }
+  </div>
+
+  <div class="reward-body">
+    <p class="reward-description">{{ reward().descripcion }}</p>
+
+    <div class="reward-info">
+      <div class="info-item">
+        <span class="info-label">Costo:</span>
+        <span class="info-value points">{{ reward().costoPuntos }} pts</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Disponibles:</span>
+        <span class="info-value">{{ reward().cantidadDisponible }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Membresía:</span>
+        <span class="info-value membership">{{ getMembershipLabel() }}</span>
+      </div>
+    </div>
+
+    @if (userPoints() > 0) {
+      <div class="user-points">
+        Tus puntos: <strong>{{ userPoints() }}</strong>
+        @if (!canAfford()) {
+          <span class="insufficient">(Insuficientes)</span>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="reward-actions">
+    @if (showActions()) {
+      <!-- Acciones de administrador -->
+      <button class="btn btn-primary" (click)="editReward()">Editar</button>
+      <button class="btn btn-danger" (click)="deleteReward()">Eliminar</button>
+    } @else {
+      <!-- Acciones de visitante -->
+      <button class="btn btn-secondary" (click)="viewReward()">Ver Detalle</button>
+      @if (isAvailable() && canAfford()) {
+        <button class="btn btn-success" (click)="exchangeReward()">Canjear</button>
+      }
+    }
+  </div>
+</div>

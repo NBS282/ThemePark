@@ -1,0 +1,95 @@
+<div class="point-history-container">
+  <div class="page-header">
+    <h1>Historial de Puntos</h1>
+    <p class="page-subtitle">Revisa todos tus movimientos de puntos</p>
+
+    <div class="header-actions">
+      <button class="btn btn-secondary" (click)="goToProfile()">
+        Volver al Perfil
+      </button>
+      <button class="btn btn-primary" (click)="goToRewards()">
+        Ver Recompensas
+      </button>
+    </div>
+  </div>
+
+  @if (error()) {
+    <div class="error-banner">
+      {{ error() }}
+      <button class="btn-close" (click)="error.set(null)">×</button>
+    </div>
+  }
+
+  @if (isLoading()) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Cargando historial...</p>
+    </div>
+  }
+
+  @if (!isLoading() && pointHistory().length === 0 && !error()) {
+    <div class="empty-state">
+      <h2>No tienes movimientos de puntos</h2>
+      <p>Aún no has acumulado o gastado puntos.</p>
+      <p>Comienza a visitar atracciones para ganar puntos y canjear recompensas.</p>
+      <button class="btn btn-primary" (click)="goToRewards()">
+        Ver Recompensas Disponibles
+      </button>
+    </div>
+  }
+
+  @if (!isLoading() && pointHistory().length > 0) {
+    <div class="summary-card">
+      <h2>Resumen</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-label">Total de Movimientos</span>
+          <span class="summary-value">{{ pointHistory().length }}</span>
+        </div>
+        <div class="summary-item gain">
+          <span class="summary-label">Puntos Ganados</span>
+          <span class="summary-value points">{{ totalPointsGained() }} pts</span>
+        </div>
+        <div class="summary-item spent">
+          <span class="summary-label">Puntos Gastados</span>
+          <span class="summary-value points">{{ totalPointsSpent() }} pts</span>
+        </div>
+        <div class="summary-item balance">
+          <span class="summary-label">Balance Neto</span>
+          <span class="summary-value points">{{ totalPointsGained() - totalPointsSpent() }} pts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="history-list">
+      <h2>Tus Movimientos</h2>
+      <div class="history-table">
+        <div class="table-header">
+          <div class="col-date">Fecha</div>
+          <div class="col-type">Tipo</div>
+          <div class="col-origin">Origen</div>
+          <div class="col-strategy">Estrategia</div>
+          <div class="col-points">Puntos</div>
+        </div>
+        @for (item of pointHistory(); track item.fecha) {
+          <div class="table-row" [class]="getTypeClass(item.tipo)">
+            <div class="col-date">{{ formatDate(item.fecha) }}</div>
+            <div class="col-type">
+              <span class="type-badge" [class]="getTypeClass(item.tipo)">
+                <span class="type-icon">{{ getTypeIcon(item.tipo) }}</span>
+                {{ item.tipo }}
+              </span>
+            </div>
+            <div class="col-origin">{{ item.origen }}</div>
+            <div class="col-strategy">{{ item.estrategiaPuntaje }}</div>
+            <div class="col-points">
+              <span class="points-value" [class]="getTypeClass(item.tipo)">
+                {{ item.puntos > 0 ? '+' : '' }}{{ item.puntos }} pts
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

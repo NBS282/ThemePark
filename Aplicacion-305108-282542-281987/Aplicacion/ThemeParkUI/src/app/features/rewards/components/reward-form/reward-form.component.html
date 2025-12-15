@@ -1,0 +1,99 @@
+<div class="reward-form-container">
+  <h2>{{ isEditMode() ? 'Editar Recompensa' : 'Nueva Recompensa' }}</h2>
+
+  <form [formGroup]="rewardForm" (ngSubmit)="submitForm()" class="reward-form">
+    <div class="form-group">
+      <label for="nombre" class="form-label">Nombre de la Recompensa *</label>
+      <input
+        type="text"
+        id="nombre"
+        formControlName="nombre"
+        class="form-control"
+        placeholder="Ej: Entrada VIP, Descuento 20%, Peluche Mascota"
+        [class.invalid]="rewardForm.get('nombre')?.invalid && rewardForm.get('nombre')?.touched"
+      />
+      @if (getErrorMessage('nombre')) {
+        <span class="error-message">{{ getErrorMessage('nombre') }}</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion" class="form-label">Descripción *</label>
+      <textarea
+        id="descripcion"
+        formControlName="descripcion"
+        class="form-control textarea"
+        placeholder="Describe los beneficios de esta recompensa..."
+        rows="4"
+        [class.invalid]="rewardForm.get('descripcion')?.invalid && rewardForm.get('descripcion')?.touched"
+      ></textarea>
+      @if (getErrorMessage('descripcion')) {
+        <span class="error-message">{{ getErrorMessage('descripcion') }}</span>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="costoPuntos" class="form-label">Costo en Puntos *</label>
+        <input
+          type="number"
+          id="costoPuntos"
+          formControlName="costoPuntos"
+          class="form-control"
+          placeholder="0"
+          min="1"
+          [class.invalid]="rewardForm.get('costoPuntos')?.invalid && rewardForm.get('costoPuntos')?.touched"
+        />
+        @if (getErrorMessage('costoPuntos')) {
+          <span class="error-message">{{ getErrorMessage('costoPuntos') }}</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="cantidadDisponible" class="form-label">Cantidad Disponible *</label>
+        <input
+          type="number"
+          id="cantidadDisponible"
+          formControlName="cantidadDisponible"
+          class="form-control"
+          placeholder="0"
+          min="0"
+          [class.invalid]="rewardForm.get('cantidadDisponible')?.invalid && rewardForm.get('cantidadDisponible')?.touched"
+        />
+        @if (getErrorMessage('cantidadDisponible')) {
+          <span class="error-message">{{ getErrorMessage('cantidadDisponible') }}</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nivelMembresiaRequerido" class="form-label">Nivel de Membresía Requerido *</label>
+      <select
+        id="nivelMembresiaRequerido"
+        formControlName="nivelMembresiaRequerido"
+        class="form-control"
+        [class.invalid]="rewardForm.get('nivelMembresiaRequerido')?.invalid && rewardForm.get('nivelMembresiaRequerido')?.touched"
+      >
+        @for (level of membershipLevels; track level.value) {
+          <option [value]="level.value">{{ level.label }}</option>
+        }
+      </select>
+      @if (getErrorMessage('nivelMembresiaRequerido')) {
+        <span class="error-message">{{ getErrorMessage('nivelMembresiaRequerido') }}</span>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()" [disabled]="isLoading()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <span>Guardando...</span>
+        } @else {
+          <span>{{ isEditMode() ? 'Actualizar' : 'Crear' }} Recompensa</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>

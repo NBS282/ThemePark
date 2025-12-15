@@ -1,0 +1,41 @@
+/* Importar fuentes Google Fonts - DEBE IR PRIMERO */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800;900&family=Righteous&family=Anton&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600;700&display=swap');
+
+/* You can add global styles to this file, and also import other style files */
+
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #EEF4ED 0%, #ffffff 50%, #EEF4ED 100%);
+  min-height: 100vh;
+}
+
+/* Paleta de colores del parque temático - Golden Twilight + Deep Blue Sea */
+:root {
+  /* Colores */
+  --color-primary: #003566;      /* Azul profundo - elementos principales */
+  --color-secondary: #001D3D;    /* Azul noche - navbar/headers */
+  --color-accent: #FFC300;       /* Dorado brillante - CTAs/botones */
+  --color-success: #FFD60A;      /* Dorado claro - success/rewards */
+  --color-light: #8DA9C4;        /* Azul claro - elementos secundarios */
+  --color-background: #EEF4ED;   /* Blanco cremoso - fondo */
+  --color-dark: #000814;         /* Azul noche profundo - textos oscuros */
+  --color-warning: #ffa726;      /* Naranja - warnings */
+  --color-danger: #ff5252;       /* Rojo - errores */
+
+  /* Tipografías */
+  --font-display: 'Bebas Neue', sans-serif;       /* Títulos principales generales */
+  --font-heading: 'Bebas Neue', sans-serif;       /* Subtítulos (H2, H3, Headers) */
+  --font-body: 'Poppins', sans-serif;             /* Body text, botones, formularios */
+  --font-accent: 'Righteous', sans-serif;         /* Acentos especiales (rewards, badges) */
+  --font-hero: 'Righteous', sans-serif;           /* Hero principal - Industrial, bold, profesional */
+  --font-section: 'Bebas Neue', sans-serif;       /* Section titles - Condensada, moderna, impactante */
+}

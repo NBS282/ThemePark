@@ -1,0 +1,16 @@
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\bin\Release\net8.0\ThemePark.IDataAccess.deps.json
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\bin\Release\net8.0\ThemePark.IDataAccess.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\bin\Release\net8.0\ThemePark.IDataAccess.pdb
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\bin\Release\net8.0\ThemePark.Domain.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\bin\Release\net8.0\ThemePark.Domain.pdb
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.csproj.AssemblyReference.cache
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.AssemblyInfoInputs.cache
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.AssemblyInfo.cs
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.csproj.CoreCompileInputs.cache
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.sourcelink.json
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePar.C12E38D4.Up2Date
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\refint\ThemePark.IDataAccess.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ThemePark.IDataAccess.pdb
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.IDataAccess\obj\Release\net8.0\ref\ThemePark.IDataAccess.dll

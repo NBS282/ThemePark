@@ -1,0 +1,150 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    @if (isAuthenticated) {
+      <!-- Menú de navegación a la izquierda del logo -->
+      <div class="left-menu">
+        <div class="dropdown-container">
+          <button class="nav-link btn-menu" (click)="toggleMenu()">
+            ☰ Menú
+          </button>
+
+          @if (menuOpen()) {
+            <div class="dropdown-menu dropdown-left">
+              <!-- Sección de Administrador -->
+              @if (isAdmin()) {
+                <div class="menu-section">
+                  <div class="menu-section-header admin-header">
+                    <span class="role-badge">👑 Administrador</span>
+                  </div>
+                  <a routerLink="/admin/users" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">👥</span>
+                    Gestionar Usuarios
+                  </a>
+                  <a routerLink="/attractions/manage" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎢</span>
+                    Gestionar Atracciones
+                  </a>
+                  <a routerLink="/events/manage" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎉</span>
+                    Gestionar Eventos
+                  </a>
+                  <a routerLink="/attractions/report" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">📊</span>
+                    Reportes de Uso
+                  </a>
+                  <a routerLink="/scoring/ranking" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🏆</span>
+                    Ranking Diario
+                  </a>
+                  <a routerLink="/rewards/admin" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎁</span>
+                    Gestionar Recompensas
+                  </a>
+                  <a routerLink="/admin/scoring-strategies" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎯</span>
+                    Estrategias de Puntuación
+                  </a>
+                  <a routerLink="/admin/system-datetime" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🕐</span>
+                    Configurar Fecha
+                  </a>
+                </div>
+              }
+
+              <!-- Sección de Operador -->
+              @if (isOperator()) {
+                <div class="menu-section">
+                  <div class="menu-section-header operator-header">
+                    <span class="role-badge">🔧 Operador</span>
+                  </div>
+                  <a routerLink="/attractions/operator" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎛️</span>
+                    Panel de Control
+                  </a>
+                </div>
+              }
+
+              <!-- Sección de Visitante -->
+              @if (isVisitor()) {
+                <div class="menu-section">
+                  <div class="menu-section-header visitor-header">
+                    <span class="role-badge">🎫 Visitante</span>
+                  </div>
+                  <a routerLink="/attractions" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎡</span>
+                    Ver Atracciones
+                  </a>
+                  <a routerLink="/events" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎪</span>
+                    Ver Eventos
+                  </a>
+                  <a routerLink="/tickets/purchase" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎟️</span>
+                    Comprar Tickets
+                  </a>
+                  <a routerLink="/tickets/my-tickets" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎫</span>
+                    Mis Tickets
+                  </a>
+                  <a routerLink="/rewards" class="menu-item" (click)="closeMenu()">
+                    <span class="menu-icon">🎁</span>
+                    Canjear Recompensas
+                  </a>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <div class="navbar-brand">
+      <a routerLink="/" class="brand-link">
+        <h1>🎢 ThemePark</h1>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      @if (!isAuthenticated) {
+        <a routerLink="/login" class="nav-link btn-login">Iniciar Sesión</a>
+        <a routerLink="/register" class="nav-link btn-register">Registrarse</a>
+      } @else {
+        <div class="right-menu">
+          <div class="system-datetime-display">
+            <span class="datetime-text">{{ formatSystemDateTime(systemDateTimeService.currentDateTime()) }}</span>
+          </div>
+
+          <span class="user-greeting">Hola, {{ currentUser?.nombre }}</span>
+
+          <div class="dropdown-container">
+            <button class="nav-link btn-profile" (click)="toggleProfileMenu()">
+              👤
+            </button>
+
+            @if (profileMenuOpen()) {
+              <div class="dropdown-menu dropdown-right">
+                <div class="menu-section">
+                  <div class="menu-section-header profile-header">
+                    <span class="role-badge">👤 Mi Cuenta</span>
+                  </div>
+                  <a routerLink="/profile" class="menu-item" (click)="closeProfileMenu()">
+                    <span class="menu-icon">⚙️</span>
+                    Mi Perfil
+                  </a>
+                  <button (click)="logout()" class="menu-item logout-item">
+                    <span class="menu-icon">🚪</span>
+                    Cerrar Sesión
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</nav>
+
+<main class="main-content">
+  <router-outlet />
+</main>

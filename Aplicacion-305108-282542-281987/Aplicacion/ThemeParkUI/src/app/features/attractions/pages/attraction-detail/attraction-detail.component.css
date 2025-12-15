@@ -1,0 +1,74 @@
+.attraction-detail-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  color: #00A8C6;
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 168, 198, 0.2);
+}
+
+.loading-message {
+  padding: 2rem;
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 168, 198, 0.3);
+  border: 3px solid white;
+}
+
+.error-message {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.saving-message {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #AEE239 0%, #8FBE00 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(143, 190, 0, 0.3);
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.form-wrapper {
+  background: white;
+  border-radius: 30px;
+  border: 5px solid #40C0CB;
+  box-shadow: 0 8px 30px rgba(0, 168, 198, 0.3);
+  padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 2rem;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+}

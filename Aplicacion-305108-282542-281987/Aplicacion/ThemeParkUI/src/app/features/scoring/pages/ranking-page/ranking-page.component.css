@@ -1,0 +1,244 @@
+.ranking-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  color: #00A8C6;
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 168, 198, 0.2);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  font-weight: 600;
+  margin: 0.5rem 0 0 0;
+}
+
+.loading-message {
+  padding: 2rem;
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 168, 198, 0.3);
+  border: 3px solid white;
+}
+
+.error-message {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.empty-message {
+  padding: 3rem;
+  background: white;
+  border-radius: 25px;
+  border: 5px solid #AEE239;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 168, 198, 0.2);
+}
+
+.empty-message p {
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ranking-table-container {
+  background: white;
+  border-radius: 30px;
+  border: 5px solid #00A8C6;
+  box-shadow: 0 8px 30px rgba(0, 168, 198, 0.3);
+  overflow: hidden;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table thead {
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+}
+
+.ranking-table th {
+  padding: 1.5rem;
+  text-align: left;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.position-col {
+  width: 150px;
+  text-align: center !important;
+}
+
+.points-col {
+  width: 180px;
+  text-align: center !important;
+}
+
+.ranking-table tbody tr {
+  border-bottom: 3px solid #AEE239;
+  transition: background-color 0.3s ease;
+}
+
+.ranking-table tbody tr:hover {
+  background-color: rgba(174, 226, 57, 0.1);
+}
+
+.ranking-table tbody tr.top-three {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFFEF0 100%);
+}
+
+.ranking-table tbody tr.top-three:hover {
+  background: linear-gradient(135deg, #FFF5D1 0%, #FFF9E6 100%);
+}
+
+.ranking-table td {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.position-cell {
+  text-align: center;
+}
+
+.position-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+  color: #555;
+  border: 3px solid #40C0CB;
+  box-shadow: 0 2px 8px rgba(64, 192, 203, 0.2);
+}
+
+.position-badge.gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+  color: #000;
+  border-color: #FFD700;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.position-badge.silver {
+  background: linear-gradient(135deg, #C0C0C0 0%, #E8E8E8 100%);
+  color: #000;
+  border-color: #C0C0C0;
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.5);
+  transform: scale(1.08);
+}
+
+.position-badge.bronze {
+  background: linear-gradient(135deg, #CD7F32 0%, #E6A057 100%);
+  color: #000;
+  border-color: #CD7F32;
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.5);
+  transform: scale(1.05);
+}
+
+.medal {
+  font-size: 1.8rem;
+}
+
+.name-cell {
+  font-weight: 800;
+  color: #00A8C6;
+  font-size: 1.1rem;
+}
+
+.email-cell {
+  color: #666;
+  font-weight: 600;
+}
+
+.points-cell {
+  text-align: center;
+}
+
+.points-badge {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, #AEE239 0%, #8FBE00 100%);
+  color: white;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: 3px solid #8FBE00;
+  box-shadow: 0 4px 12px rgba(143, 190, 0, 0.4);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .ranking-table-container {
+    overflow-x: auto;
+  }
+
+  .ranking-table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ranking-container {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .ranking-table th,
+  .ranking-table td {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .position-badge {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .points-badge {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .email-cell {
+    display: none;
+  }
+}

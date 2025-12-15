@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # SQL Server
+  sql:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: sql
+    environment:
+      - ACCEPT_EULA=1
+      - MSSQL_SA_PASSWORD=MyPass@word
+      - MSSQL_PID=Developer
+      - MSSQL_USER=SA
+    ports:
+      - "1433:1433"
+    networks:
+      - da2-network
+    volumes:
+      - sql-data:/var/opt/mssql
+    restart: unless-stopped
+
+  # Backend API
+  api:
+    build:
+      context: ./ThemePark
+      dockerfile: Dockerfile
+    image: deploy/api:latest
+    container_name: api
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "5222:8080"
+    networks:
+      - da2-network
+    depends_on:
+      - sql
+    restart: unless-stopped
+
+  # Frontend UI
+  frontend:
+    build:
+      context: ./ThemeParkUI
+      dockerfile: Dockerfile
+    image: deploy/ui:latest
+    container_name: frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - da2-network
+    depends_on:
+      - api
+    restart: unless-stopped
+
+networks:
+  da2-network:
+    driver: bridge
+
+volumes:
+  sql-data:

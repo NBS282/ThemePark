@@ -1,0 +1,78 @@
+<div class="events-list-container">
+  <div class="header">
+    <h1>Gestión de Eventos</h1>
+    <button class="btn-create" (click)="createNew()">
+      Nuevo Evento
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando eventos...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (!isLoading() && events().length === 0) {
+    <div class="empty-message">
+      <p>No hay eventos registrados</p>
+      <button class="btn-create-empty" (click)="createNew()">
+        Crear primer evento
+      </button>
+    </div>
+  }
+
+  @if (!isLoading() && events().length > 0) {
+    <div class="events-table-container">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Aforo</th>
+            <th>Costo Adicional</th>
+            <th>Atracciones</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (event of events(); track event.id) {
+            <tr>
+              <td class="nombre-cell">{{ event.name }}</td>
+              <td>{{ event.fecha | date:'shortDate' }}</td>
+              <td>{{ event.hora }}</td>
+              <td>{{ event.aforo }}</td>
+              <td>{{ event.costoAdicional | currency }}</td>
+              <td>{{ event.atracciones.length }} {{ event.atracciones.length === 1 ? 'atracción' : 'atracciones' }}</td>
+              <td class="actions-cell">
+                <button class="btn-view" (click)="viewEvent(event.id)">
+                  Ver/Editar
+                </button>
+                <button class="btn-delete" (click)="confirmDelete(event.id)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  <!-- Modal de confirmación de eliminación -->
+  @if (eventToDelete()) {
+    <div class="modal-overlay" (click)="cancelDelete()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Confirmar Eliminación</h2>
+        <p>¿Estás seguro de que deseas eliminar este evento?</p>
+        <p class="warning">Esta acción no se puede deshacer.</p>
+        <div class="modal-actions">
+          <button class="btn-cancel" (click)="cancelDelete()">Cancelar</button>
+          <button class="btn-confirm-delete" (click)="deleteEvent()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

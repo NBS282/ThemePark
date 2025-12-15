@@ -1,0 +1,84 @@
+<div class="edit-roles-container">
+  <div class="edit-roles-card">
+    <h2>Editar Roles de Usuario</h2>
+
+    <div class="user-info">
+      <p><strong>Usuario:</strong> {{ user().nombre }} {{ user().apellido }}</p>
+      <p><strong>Email:</strong> {{ user().email }}</p>
+    </div>
+
+    @if (error()) {
+      <div class="error-message">{{ error() }}</div>
+    }
+
+    <div class="roles-selection">
+      <h3>Seleccionar Roles:</h3>
+      <div class="roles-checkboxes">
+        @for (role of availableRoles; track role) {
+          <label class="role-checkbox">
+            <input
+              type="checkbox"
+              [checked]="isRoleSelected(role)"
+              (change)="toggleRole(role)"
+              [disabled]="isLoading()"
+            />
+            <span class="role-label">{{ role }}</span>
+          </label>
+        }
+      </div>
+    </div>
+
+    @if (showMembershipSelector) {
+      <div class="membership-selection">
+        <h3>Nivel de Membresía:</h3>
+        <div class="membership-selector">
+          @for (membership of availableMemberships; track membership) {
+            <label class="membership-radio">
+              <input
+                type="radio"
+                name="membership"
+                [value]="membership"
+                [checked]="selectedMembership() === membership"
+                (change)="selectedMembership.set(membership)"
+                [disabled]="isLoading()"
+              />
+              <span class="membership-label">{{ membership }}</span>
+            </label>
+          }
+        </div>
+      </div>
+    }
+
+    <div class="current-selection">
+      <h4>Roles Seleccionados:</h4>
+      @if (selectedRoles().size > 0) {
+        <div class="selected-roles-list">
+          @for (role of selectedRoles(); track role) {
+            <span class="selected-role-badge">{{ role }}</span>
+          }
+        </div>
+      } @else {
+        <p class="no-roles-message">No hay roles seleccionados</p>
+      }
+    </div>
+
+    <div class="actions">
+      <button
+        class="btn-cancel"
+        (click)="cancel()"
+        [disabled]="isLoading()">
+        Cancelar
+      </button>
+      <button
+        class="btn-save"
+        (click)="save()"
+        [disabled]="isLoading() || selectedRoles().size === 0">
+        @if (isLoading()) {
+          Guardando...
+        } @else {
+          Guardar Cambios
+        }
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="incident-form-container">
+  <h3>Reportar Incidencia</h3>
+
+  <form [formGroup]="incidentForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="prioridad">Prioridad:</label>
+      <select id="prioridad" formControlName="prioridad" class="form-control">
+        @for (prioridad of prioridades; track prioridad.value) {
+          <option [value]="prioridad.value">{{ prioridad.label }}</option>
+        }
+      </select>
+    </div>
+
+    @if (showOtraPrioridad()) {
+      <div class="form-group">
+        <label for="otraPrioridad">Especificar Prioridad:</label>
+        <input
+          type="text"
+          id="otraPrioridad"
+          formControlName="otraPrioridad"
+          class="form-control"
+          placeholder="Ingrese la prioridad personalizada">
+        @if (incidentForm.get('otraPrioridad')?.invalid && incidentForm.get('otraPrioridad')?.touched) {
+          <span class="error-text">Debe especificar la prioridad</span>
+        }
+      </div>
+    }
+
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        formControlName="descripcion"
+        class="form-control"
+        rows="4"
+        placeholder="Describa la incidencia..."></textarea>
+      @if (incidentForm.get('descripcion')?.invalid && incidentForm.get('descripcion')?.touched) {
+        <span class="error-text">La descripción es requerida</span>
+      }
+    </div>
+
+    @if (error()) {
+      <div class="error-message">{{ error() }}</div>
+    }
+
+    <button type="submit" class="btn-submit">
+      Reportar Incidencia
+    </button>
+  </form>
+</div>

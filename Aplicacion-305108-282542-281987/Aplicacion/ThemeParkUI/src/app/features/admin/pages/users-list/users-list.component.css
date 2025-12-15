@@ -1,0 +1,298 @@
+.users-list-container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+h1 {
+  color: #00A8C6;
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 168, 198, 0.2);
+}
+
+.loading-message {
+  padding: 2rem;
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 168, 198, 0.3);
+  border: 3px solid white;
+}
+
+.error-message {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.empty-message {
+  padding: 3rem;
+  background: white;
+  border-radius: 25px;
+  border: 5px solid #AEE239;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 168, 198, 0.2);
+}
+
+.empty-message p {
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Tabla de usuarios */
+.users-table-container {
+  background: white;
+  border-radius: 25px;
+  border: 5px solid #00A8C6;
+  box-shadow: 0 8px 30px rgba(0, 168, 198, 0.3);
+  overflow: hidden;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table thead {
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+}
+
+.users-table th {
+  padding: 1.5rem;
+  text-align: left;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.users-table tbody tr {
+  border-bottom: 3px solid #AEE239;
+  transition: background-color 0.3s ease;
+}
+
+.users-table tbody tr:hover {
+  background-color: rgba(174, 226, 57, 0.1);
+}
+
+.users-table td {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.roles-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #AEE239 0%, #8FBE00 100%);
+  color: white;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(143, 190, 0, 0.3);
+}
+
+.membership-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #40C0CB 0%, #00A8C6 100%);
+  color: white;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 168, 198, 0.3);
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-view,
+.btn-delete {
+  padding: 0.75rem 1.5rem;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-view {
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-color: #00A8C6;
+  box-shadow: 0 4px 12px rgba(0, 168, 198, 0.3);
+}
+
+.btn-view:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 168, 198, 0.4);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-color: #ff5252;
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.3);
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 82, 82, 0.4);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  padding: 3rem;
+  border-radius: 30px;
+  border: 5px solid #ff5252;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(255, 82, 82, 0.4);
+  animation: slideIn 0.3s ease;
+}
+
+.modal-content h2 {
+  color: #ff5252;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(255, 82, 82, 0.2);
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.warning {
+  color: #ff5252;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-cancel,
+.btn-confirm-delete {
+  flex: 1;
+  padding: 1rem;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cancel {
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-color: #00A8C6;
+  box-shadow: 0 4px 12px rgba(0, 168, 198, 0.3);
+}
+
+.btn-cancel:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 168, 198, 0.4);
+}
+
+.btn-confirm-delete {
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-color: #ff5252;
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.3);
+}
+
+.btn-confirm-delete:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(255, 82, 82, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .users-table-container {
+    overflow-x: auto;
+  }
+
+  .users-table {
+    min-width: 1000px;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions-cell {
+    flex-direction: column;
+  }
+
+  .modal-content {
+    padding: 2rem;
+  }
+}

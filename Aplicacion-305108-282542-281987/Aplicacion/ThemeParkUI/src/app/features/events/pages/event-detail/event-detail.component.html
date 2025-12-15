@@ -1,0 +1,28 @@
+<div class="event-detail-container">
+  <div class="header">
+    <h1>{{ isEditMode ? 'Ver Evento' : 'Nuevo Evento' }}</h1>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando evento...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (isSaving()) {
+    <div class="saving-message">Guardando...</div>
+  }
+
+  @if (!isLoading()) {
+    <div class="form-wrapper">
+      <app-event-form
+        [event]="event()"
+        [attractions]="attractions()"
+        (onSave)="handleSave($event)"
+        (onCancel)="handleCancel()">
+      </app-event-form>
+    </div>
+  }
+</div>

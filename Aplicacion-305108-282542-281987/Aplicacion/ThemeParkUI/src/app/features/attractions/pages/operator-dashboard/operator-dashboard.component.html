@@ -1,0 +1,61 @@
+<div class="operator-dashboard-container">
+  <div class="header">
+    <h1>Panel de Operador</h1>
+    <p class="subtitle">Selecciona una atracción para operar</p>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando atracciones...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (!isLoading() && attractions().length === 0) {
+    <div class="empty-message">
+      <p>No hay atracciones disponibles</p>
+    </div>
+  }
+
+  @if (!isLoading() && attractions().length > 0) {
+    <div class="attractions-grid">
+      @for (attraction of attractions(); track attraction.nombre) {
+        <div class="attraction-card">
+          <div class="card-header">
+            <h3>{{ attraction.nombre }}</h3>
+            @if (attraction.tieneIncidencia) {
+              <span class="status-badge status-closed">Cerrada</span>
+            } @else {
+              <span class="status-badge status-open">Abierta</span>
+            }
+          </div>
+
+          <div class="card-body">
+            <div class="info-row">
+              <span class="label">Tipo:</span>
+              <span class="value">{{ getTipoLabel(attraction.tipo) }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Edad Mínima:</span>
+              <span class="value">{{ attraction.edadMinima }} años</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Capacidad:</span>
+              <span class="value">{{ attraction.capacidadMaxima }}</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn-operate" (click)="operateAttraction(attraction.nombre)">
+              🎛️ Operar Atracción
+            </button>
+            <button class="btn-maintenance" (click)="manageMaintenance(attraction.nombre)">
+              🔧 Mantenimientos
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

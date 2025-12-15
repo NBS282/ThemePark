@@ -1,0 +1,42 @@
+.profile-page {
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+}
+
+h1 {
+  color: #00A8C6;
+  margin: 0 auto 2.5rem;
+  max-width: 700px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 168, 198, 0.2);
+}
+
+.loading-message {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 168, 198, 0.3);
+  border: 3px solid white;
+}
+
+.error-message {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+  border: 3px solid white;
+}

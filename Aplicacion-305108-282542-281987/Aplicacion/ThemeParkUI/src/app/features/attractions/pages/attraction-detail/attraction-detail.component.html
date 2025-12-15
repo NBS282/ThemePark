@@ -1,0 +1,27 @@
+<div class="attraction-detail-container">
+  <div class="header">
+    <h1>{{ isEditMode ? 'Editar Atracción' : 'Nueva Atracción' }}</h1>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando atracción...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (isSaving()) {
+    <div class="saving-message">Guardando...</div>
+  }
+
+  @if (!isLoading()) {
+    <div class="form-wrapper">
+      <app-attraction-form
+        [attraction]="attraction()"
+        (onSave)="handleSave($event)"
+        (onCancel)="handleCancel()">
+      </app-attraction-form>
+    </div>
+  }
+</div>

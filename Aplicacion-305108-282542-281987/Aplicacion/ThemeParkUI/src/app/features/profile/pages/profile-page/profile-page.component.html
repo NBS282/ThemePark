@@ -1,0 +1,21 @@
+<div class="profile-page">
+  <h1>Perfil de Usuario</h1>
+
+  @if (!isEditing()) {
+    <app-profile-view [user]="user" (onEdit)="onEdit()"></app-profile-view>
+  } @else {
+    <app-profile-edit-form
+      [user]="user"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()">
+    </app-profile-edit-form>
+  }
+
+  @if (isLoading) {
+    <div class="loading-message">Actualizando perfil...</div>
+  }
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+</div>

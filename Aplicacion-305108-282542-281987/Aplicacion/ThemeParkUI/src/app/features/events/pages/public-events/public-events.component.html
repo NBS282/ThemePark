@@ -1,0 +1,128 @@
+<div class="public-events-container">
+  <div class="header">
+    <h1>Eventos Especiales</h1>
+    <p class="subtitle">Descubre todos nuestros eventos próximos y sus atracciones incluidas</p>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando eventos...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (!isLoading() && events().length === 0) {
+    <div class="empty-message">
+      <p>No hay eventos disponibles en este momento</p>
+    </div>
+  }
+
+  @if (!isLoading() && events().length > 0) {
+    <div class="events-grid">
+      @for (event of events(); track event.id) {
+        <div class="event-card" (click)="viewDetails(event)">
+          <div class="card-header">
+            <h3>{{ event.name }}</h3>
+            @if (isEventPast(event)) {
+              <span class="status-badge status-past">Finalizado</span>
+            } @else {
+              <span class="status-badge status-upcoming">Próximo</span>
+            }
+          </div>
+
+          <div class="card-body">
+            <div class="info-row">
+              <span class="label">📅 Fecha:</span>
+              <span class="value">{{ formatDate(event.fecha) }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">🕐 Hora:</span>
+              <span class="value">{{ formatTime(event.hora) }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">👥 Aforo:</span>
+              <span class="value">{{ event.aforo }} personas</span>
+            </div>
+            <div class="info-row">
+              <span class="label">💰 Costo Adicional:</span>
+              <span class="value">${{ event.costoAdicional }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">🎢 Atracciones:</span>
+              <span class="value">{{ event.atracciones.length }}</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn-details">Ver Detalles</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Modal de detalles -->
+  @if (selectedEvent()) {
+    <div class="modal-overlay" (click)="closeDetails()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>{{ selectedEvent()!.name }}</h2>
+          <button class="btn-close" (click)="closeDetails()">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="detail-section">
+            <h3>Información del Evento</h3>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <strong>📅 Fecha:</strong>
+                <span>{{ formatDate(selectedEvent()!.fecha) }}</span>
+              </div>
+              <div class="detail-item">
+                <strong>🕐 Hora:</strong>
+                <span>{{ formatTime(selectedEvent()!.hora) }}</span>
+              </div>
+              <div class="detail-item">
+                <strong>👥 Aforo Máximo:</strong>
+                <span>{{ selectedEvent()!.aforo }} personas</span>
+              </div>
+              <div class="detail-item">
+                <strong>💰 Costo Adicional:</strong>
+                <span>${{ selectedEvent()!.costoAdicional }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Atracciones Incluidas</h3>
+            @if (selectedEvent()!.atracciones.length === 0) {
+              <p class="no-attractions">No hay atracciones incluidas en este evento</p>
+            } @else {
+              <div class="attractions-list">
+                @for (attraction of selectedEvent()!.atracciones; track attraction.nombre) {
+                  <div class="attraction-item">
+                    <div class="attraction-info">
+                      <h4>{{ attraction.nombre }}</h4>
+                      <p>{{ attraction.descripcion }}</p>
+                    </div>
+                    <div class="attraction-meta">
+                      <span class="meta-badge">Edad mínima: {{ attraction.edadMinima }} años</span>
+                      <span class="meta-badge">Capacidad: {{ attraction.capacidadMaxima }}</span>
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="detail-section">
+            <div class="info-box">
+              <p><strong>ℹ️ Nota:</strong> Al comprar un ticket para este evento, tendrás acceso exclusivo a todas las atracciones incluidas durante la fecha y hora del evento (duración: 4 horas desde el inicio).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

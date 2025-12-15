@@ -1,0 +1,72 @@
+<div class="maintenance-form-container">
+  <h3>Programar Mantenimiento</h3>
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  <form [formGroup]="maintenanceForm" (ngSubmit)="submit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <input
+          type="date"
+          id="fecha"
+          class="form-control"
+          formControlName="fecha"
+          [min]="getMinDate()"
+        />
+        @if (maintenanceForm.get('fecha')?.invalid && maintenanceForm.get('fecha')?.touched) {
+          <span class="error-text">La fecha es requerida</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="horaInicio">Hora de Inicio</label>
+        <input
+          type="time"
+          id="horaInicio"
+          class="form-control"
+          formControlName="horaInicio"
+          placeholder="HH:mm"
+        />
+        @if (maintenanceForm.get('horaInicio')?.invalid && maintenanceForm.get('horaInicio')?.touched) {
+          <span class="error-text">La hora es requerida (formato HH:mm)</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="duracionMinutos">Duración (minutos)</label>
+      <input
+        type="number"
+        id="duracionMinutos"
+        class="form-control"
+        formControlName="duracionMinutos"
+        placeholder="Ej: 120"
+        min="1"
+      />
+      @if (maintenanceForm.get('duracionMinutos')?.invalid && maintenanceForm.get('duracionMinutos')?.touched) {
+        <span class="error-text">La duración debe ser mayor a 0</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción del Mantenimiento</label>
+      <textarea
+        id="descripcion"
+        class="form-control"
+        formControlName="descripcion"
+        placeholder="Describa el mantenimiento programado..."
+        rows="4"
+      ></textarea>
+      @if (maintenanceForm.get('descripcion')?.invalid && maintenanceForm.get('descripcion')?.touched) {
+        <span class="error-text">La descripción es requerida</span>
+      }
+    </div>
+
+    <button type="submit" class="btn-submit" [disabled]="maintenanceForm.invalid">
+      Programar Mantenimiento
+    </button>
+  </form>
+</div>

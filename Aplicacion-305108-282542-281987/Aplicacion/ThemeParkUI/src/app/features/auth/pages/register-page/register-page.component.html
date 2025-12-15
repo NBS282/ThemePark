@@ -1,0 +1,15 @@
+<div class="register-page">
+  <app-register-form (submitRegister)="onRegister($event)"></app-register-form>
+  
+  @if (isLoading) {
+    <div class="loading-message">Registrando usuario...</div>
+  }
+  
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+  
+  <div class="login-link">
+    <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión aquí</a></p>
+  </div>
+</div>

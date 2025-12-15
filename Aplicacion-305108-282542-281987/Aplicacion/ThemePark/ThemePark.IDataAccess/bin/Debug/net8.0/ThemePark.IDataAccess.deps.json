@@ -1,0 +1,63 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ThemePark.IDataAccess/1.0.0": {
+        "dependencies": {
+          "StyleCop.Analyzers": "1.2.0-beta.261",
+          "ThemePark.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ThemePark.IDataAccess.dll": {}
+        }
+      },
+      "StyleCop.Analyzers/1.2.0-beta.261": {
+        "dependencies": {
+          "StyleCop.Analyzers.Unstable": "1.2.0.261"
+        }
+      },
+      "StyleCop.Analyzers.Unstable/1.2.0.261": {},
+      "ThemePark.Domain/1.0.0": {
+        "dependencies": {
+          "StyleCop.Analyzers": "1.2.0-beta.261"
+        },
+        "runtime": {
+          "ThemePark.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ThemePark.IDataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StyleCop.Analyzers/1.2.0-beta.261": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C0bMvkB95HkX2LNsKO9KbVM+BMzkHjRXxdxQ7rogiy8gtwy2yAaPNFY1+98DzlN8XUpJ/39oGX6Da7qnMp2FeA==",
+      "path": "stylecop.analyzers/1.2.0-beta.261",
+      "hashPath": "stylecop.analyzers.1.2.0-beta.261.nupkg.sha512"
+    },
+    "StyleCop.Analyzers.Unstable/1.2.0.261": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FpInVJVmFyWIRz4oIpPpLuOkW3oFhfU4CcT7bkeZlN+iwG1T37hGVZFQ8bA2fsJv5vAHOlqLpvk7HyU3q6tF2w==",
+      "path": "stylecop.analyzers.unstable/1.2.0.261",
+      "hashPath": "stylecop.analyzers.unstable.1.2.0.261.nupkg.sha512"
+    },
+    "ThemePark.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

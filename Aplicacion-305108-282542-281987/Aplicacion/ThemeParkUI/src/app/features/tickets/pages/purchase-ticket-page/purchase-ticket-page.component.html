@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="card">
+    <h2>Comprar Ticket</h2>
+
+    @if (successMessage) {
+      <div class="alert alert-success">
+        {{ successMessage }}
+      </div>
+    }
+
+    @if (error) {
+      <div class="alert alert-error">
+        {{ error }}
+      </div>
+    }
+
+    <form (ngSubmit)="onSubmit()" #ticketForm="ngForm">
+      <div class="form-group">
+        <label for="fechaVisita">Fecha de Visita</label>
+        <input
+          type="date"
+          id="fechaVisita"
+          name="fechaVisita"
+          [(ngModel)]="fechaVisita"
+          [min]="minDate"
+          required
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tipoEntrada">Tipo de Entrada</label>
+        <select
+          id="tipoEntrada"
+          name="tipoEntrada"
+          [(ngModel)]="tipoEntrada"
+          (ngModelChange)="onTipoEntradaChange()"
+          required
+          class="form-control"
+        >
+          <option value="general">General</option>
+          <option value="evento">Evento Especial</option>
+        </select>
+      </div>
+
+      @if (tipoEntrada === 'evento') {
+        <div class="form-group">
+          <label for="evento">Seleccionar Evento</label>
+          @if (isLoadingEvents()) {
+            <p class="loading-text">Cargando eventos...</p>
+          } @else if (events().length === 0) {
+            <p class="no-events">No hay eventos disponibles</p>
+          } @else {
+            <select
+              id="evento"
+              name="evento"
+              [(ngModel)]="selectedEventId"
+              required
+              class="form-control"
+            >
+              <option value="">-- Seleccione un evento --</option>
+              @for (event of events(); track event.id) {
+                <option [value]="event.id">
+                  {{ event.name }} - {{ event.fecha }} {{ event.hora }} (Aforo: {{ event.aforo }}, Costo adicional: ${{ event.costoAdicional }})
+                </option>
+              }
+            </select>
+          }
+        </div>
+      }
+
+      <button
+        type="submit"
+        [disabled]="!ticketForm.form.valid || isLoading || (tipoEntrada === 'evento' && !selectedEventId)"
+        class="btn btn-primary"
+      >
+        @if (isLoading) {
+          <span>Comprando...</span>
+        } @else {
+          <span>Comprar Ticket</span>
+        }
+      </button>
+    </form>
+  </div>
+</div>

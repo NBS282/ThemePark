@@ -1,0 +1,76 @@
+<div class="user-detail-container">
+  <div class="header">
+    <button class="btn-back" (click)="goBack()">← Volver</button>
+    <h1>Detalle de Usuario</h1>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando usuario...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (user() && !isEditingRoles()) {
+    <div class="user-card">
+      <h2>Información del Usuario</h2>
+
+      <div class="info-section">
+        <div class="info-row">
+          <span class="label">ID:</span>
+          <span class="value">{{ user()!.id }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Código de Identificación:</span>
+          <span class="value">{{ user()!.codigoIdentificacion }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Nombre:</span>
+          <span class="value">{{ user()!.nombre }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Apellido:</span>
+          <span class="value">{{ user()!.apellido }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Email:</span>
+          <span class="value">{{ user()!.email }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Nivel de Membresía:</span>
+          <span class="value membership-badge">{{ user()!.nivelMembresia }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Fecha de Registro:</span>
+          <span class="value">{{ user()!.fechaRegistro | date:'dd/MM/yyyy' }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Roles:</span>
+          <span class="value roles-badge">{{ getRolesDisplay(user()!.roles) }}</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-edit-roles" (click)="onEditRoles()">
+          Editar Roles
+        </button>
+      </div>
+    </div>
+  }
+
+  @if (user() && isEditingRoles()) {
+    <app-edit-user-roles
+      [user]="user()!"
+      (onCancel)="onCancelEdit()"
+      (onRolesUpdated)="onRolesUpdated($event)">
+    </app-edit-user-roles>
+  }
+</div>

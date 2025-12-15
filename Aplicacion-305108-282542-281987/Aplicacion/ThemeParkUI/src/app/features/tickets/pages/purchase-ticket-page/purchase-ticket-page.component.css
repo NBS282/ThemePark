@@ -1,0 +1,114 @@
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 53, 102, 0.15);
+  padding: 2.5rem;
+  border: 3px solid var(--color-light);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--color-light);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(255, 195, 0, 0.2);
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+  box-shadow: 0 4px 10px rgba(255, 195, 0, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-success);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 214, 10, 0.5);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: rgba(255, 214, 10, 0.2);
+  color: var(--color-dark);
+  border: 2px solid var(--color-success);
+}
+
+.alert-error {
+  background-color: #ffe0e0;
+  color: var(--color-danger);
+  border: 2px solid var(--color-danger);
+}
+
+.loading-text {
+  color: var(--color-light);
+  font-family: var(--font-body);
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.no-events {
+  color: var(--color-light);
+  font-family: var(--font-body);
+  font-style: italic;
+  margin: 0.5rem 0;
+}

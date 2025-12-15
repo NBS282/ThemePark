@@ -1,0 +1,53 @@
+<div class="datetime-config-container">
+  <div class="header">
+    <h1>Configurar Fecha del Sistema</h1>
+    <p class="subtitle">Gestiona la fecha y hora del sistema del parque</p>
+  </div>
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (successMessage()) {
+    <div class="success-message">{{ successMessage() }}</div>
+  }
+
+  <div class="content-grid">
+    <div class="current-datetime-section">
+      <h2>Fecha Actual del Sistema</h2>
+      @if (isLoading()) {
+        <div class="loading-message">Cargando...</div>
+      }
+      @if (!isLoading() && currentDateTime()) {
+        <div class="datetime-display">
+          <div class="datetime-icon">📅</div>
+          <div class="datetime-text">
+            {{ formatDateTime(currentDateTime()!) }}
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="config-section">
+      <h2>Configurar Nueva Fecha</h2>
+      <form [formGroup]="datetimeForm" (ngSubmit)="submit()" class="datetime-form">
+        <div class="form-group">
+          <label for="fechaHora">Fecha y Hora</label>
+          <input
+            type="datetime-local"
+            id="fechaHora"
+            formControlName="fechaHora"
+            class="form-control"
+          />
+          @if (datetimeForm.get('fechaHora')?.invalid && datetimeForm.get('fechaHora')?.touched) {
+            <div class="field-error">La fecha y hora son requeridas</div>
+          }
+        </div>
+
+        <button type="submit" [disabled]="datetimeForm.invalid || isLoading()" class="btn-submit">
+          {{ isLoading() ? 'Actualizando...' : 'Actualizar Fecha' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

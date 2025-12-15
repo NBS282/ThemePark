@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "gebm5FFtI0Y=",
+  "success": true,
+  "projectFilePath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nicob_86fbhyf\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.261\\stylecop.analyzers.1.2.0-beta.261.nupkg.sha512",
+    "C:\\Users\\Nicob_86fbhyf\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.261\\stylecop.analyzers.unstable.1.2.0.261.nupkg.sha512"
+  ],
+  "logs": []
+}

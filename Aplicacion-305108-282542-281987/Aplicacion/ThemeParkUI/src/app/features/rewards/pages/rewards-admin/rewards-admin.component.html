@@ -1,0 +1,100 @@
+<div class="rewards-admin-container">
+  <div class="page-header">
+    <h1>Gestión de Recompensas</h1>
+    <p class="page-subtitle">Administra todas las recompensas del parque</p>
+
+    <div class="header-actions">
+      <button class="btn btn-secondary" (click)="backToList()">
+        Volver a Recompensas
+      </button>
+      <button class="btn btn-primary" (click)="openCreateForm()">
+        + Nueva Recompensa
+      </button>
+    </div>
+  </div>
+
+  @if (successMessage()) {
+    <div class="success-banner">
+      {{ successMessage() }}
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error-banner">
+      {{ error() }}
+      <button class="btn-close" (click)="error.set(null)">×</button>
+    </div>
+  }
+
+  @if (isLoading() && !showCreateForm() && !showEditForm()) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Cargando recompensas...</p>
+    </div>
+  }
+
+  @if (!isLoading() && rewards().length === 0 && !error() && !showCreateForm()) {
+    <div class="empty-state">
+      <h2>No hay recompensas registradas</h2>
+      <p>Comienza creando tu primera recompensa.</p>
+      <button class="btn btn-primary" (click)="openCreateForm()">
+        + Crear Primera Recompensa
+      </button>
+    </div>
+  }
+
+  @if (!isLoading() && rewards().length > 0 && !showCreateForm() && !showEditForm()) {
+    <div class="rewards-grid">
+      @for (reward of rewards(); track reward.id) {
+        <app-reward-card
+          [reward]="reward"
+          [showActions]="true"
+          (onEdit)="openEditForm($event)"
+          (onDelete)="confirmDelete($event)"
+        />
+      }
+    </div>
+  }
+
+  @if (showCreateForm()) {
+    <div class="form-overlay">
+      <app-reward-form
+        [isEditMode]="false"
+        (onSubmit)="handleCreateSubmit($event)"
+        (onCancel)="closeForm()"
+      />
+    </div>
+  }
+
+  @if (showEditForm() && rewardToEdit()) {
+    <div class="form-overlay">
+      <app-reward-form
+        [reward]="rewardToEdit()"
+        [isEditMode]="true"
+        (onSubmit)="handleEditSubmit($event)"
+        (onCancel)="closeForm()"
+      />
+    </div>
+  }
+
+  @if (rewardToDelete()) {
+    <div class="modal-overlay" (click)="cancelDelete()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Confirmar Eliminación</h2>
+        <div class="modal-body">
+          <p class="modal-reward-name">{{ rewardToDelete()!.nombre }}</p>
+          <p>¿Estás seguro de que deseas eliminar esta recompensa?</p>
+          <p class="modal-warning">Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" (click)="cancelDelete()">
+            Cancelar
+          </button>
+          <button class="btn btn-danger" (click)="executeDelete()" [disabled]="isLoading()">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

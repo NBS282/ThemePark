@@ -1,0 +1,103 @@
+<div class="form-container">
+  <form [formGroup]="eventForm" (ngSubmit)="save()">
+    <div class="form-group">
+      <label for="nombre">Nombre del Evento:</label>
+      <input
+        type="text"
+        id="nombre"
+        formControlName="nombre"
+        class="form-control"
+        [attr.disabled]="isEditMode ? true : null">
+      @if (eventForm.get('nombre')?.invalid && eventForm.get('nombre')?.touched) {
+        <span class="error-text">El nombre es requerido</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input
+        type="date"
+        id="fecha"
+        formControlName="fecha"
+        class="form-control">
+      @if (eventForm.get('fecha')?.invalid && eventForm.get('fecha')?.touched) {
+        <span class="error-text">La fecha es requerida</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora (HH:MM:SS):</label>
+      <input
+        type="time"
+        id="hora"
+        formControlName="hora"
+        class="form-control"
+        step="1">
+      @if (eventForm.get('hora')?.invalid && eventForm.get('hora')?.touched) {
+        <span class="error-text">La hora es requerida</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="aforo">Aforo:</label>
+      <input
+        type="number"
+        id="aforo"
+        formControlName="aforo"
+        class="form-control"
+        min="1">
+      @if (eventForm.get('aforo')?.invalid && eventForm.get('aforo')?.touched) {
+        <span class="error-text">El aforo debe ser mayor a 0</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="costoAdicional">Costo Adicional:</label>
+      <input
+        type="number"
+        id="costoAdicional"
+        formControlName="costoAdicional"
+        class="form-control"
+        min="0"
+        step="0.01">
+      @if (eventForm.get('costoAdicional')?.invalid && eventForm.get('costoAdicional')?.touched) {
+        <span class="error-text">El costo adicional debe ser mayor o igual a 0</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Atracciones Incluidas:</label>
+      <div class="attractions-list">
+        @if (attractions().length === 0) {
+          <p class="no-attractions">No hay atracciones disponibles</p>
+        } @else {
+          @for (attraction of attractions(); track attraction.nombre) {
+            <div class="attraction-item">
+              <input
+                type="checkbox"
+                [id]="'attraction-' + attraction.nombre"
+                [checked]="isAttractionSelected(attraction.nombre)"
+                (change)="toggleAttraction(attraction.nombre)">
+              <label [for]="'attraction-' + attraction.nombre">
+                {{ attraction.nombre }} - {{ attraction.descripcion }}
+              </label>
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    @if (error()) {
+      <div class="error-message">{{ error() }}</div>
+    }
+
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="cancel()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn-save">
+        {{ isEditMode ? 'Actualizar' : 'Crear' }}
+      </button>
+    </div>
+  </form>
+</div>

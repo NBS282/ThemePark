@@ -1,0 +1,65 @@
+<div class="exchange-history-container">
+  <div class="page-header">
+    <h1>Historial de Canjes</h1>
+    <p class="page-subtitle">Revisa todas las recompensas que has canjeado</p>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="goToRewards()">
+        Ver Recompensas Disponibles
+      </button>
+    </div>
+  </div>
+
+  @if (error()) {
+    <div class="error-banner">
+      {{ error() }}
+      <button class="btn-close" (click)="error.set(null)">×</button>
+    </div>
+  }
+
+  @if (isLoading()) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Cargando historial...</p>
+    </div>
+  }
+
+  @if (!isLoading() && exchanges().length === 0 && !error()) {
+    <div class="empty-state">
+      <h2>No tienes canjes realizados</h2>
+      <p>Aún no has canjeado ninguna recompensa.</p>
+      <p>Acumula puntos visitando atracciones y comienza a canjear.</p>
+      <button class="btn btn-primary" (click)="goToRewards()">
+        Ver Recompensas Disponibles
+      </button>
+    </div>
+  }
+
+  @if (!isLoading() && exchanges().length > 0) {
+    <div class="summary-card">
+      <h2>Resumen</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-label">Total de Canjes</span>
+          <span class="summary-value">{{ exchanges().length }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Puntos Gastados</span>
+          <span class="summary-value points">{{ totalPointsSpent() }} pts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exchanges-list">
+      <h2>Tus Canjes</h2>
+      <div class="exchanges-grid">
+        @for (item of exchanges(); track item.exchange.id) {
+          <app-exchange-history-item
+            [exchange]="item.exchange"
+            [rewardName]="item.rewardName"
+          />
+        }
+      </div>
+    </div>
+  }
+</div>

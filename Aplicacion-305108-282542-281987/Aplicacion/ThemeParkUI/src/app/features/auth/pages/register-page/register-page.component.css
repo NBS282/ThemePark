@@ -1,0 +1,59 @@
+.register-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loading-message {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #00A8C6 0%, #40C0CB 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 168, 198, 0.3);
+  border: 3px solid white;
+}
+
+.error-message {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+  border: 3px solid white;
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.login-link p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.login-link a {
+  color: #40C0CB;
+  text-decoration: none;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #AEE239;
+  text-decoration: underline;
+  text-shadow: 1px 1px 3px rgba(174, 226, 57, 0.3);
+}

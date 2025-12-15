@@ -1,0 +1,12 @@
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\bin\Release\net8.0\ThemePark.Domain.deps.json
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\bin\Release\net8.0\ThemePark.Domain.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\bin\Release\net8.0\ThemePark.Domain.pdb
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.AssemblyInfoInputs.cache
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.AssemblyInfo.cs
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.csproj.CoreCompileInputs.cache
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.sourcelink.json
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\refint\ThemePark.Domain.dll
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ThemePark.Domain.pdb
+E:\Facultad\DA2\305108-282542-281987\ThemePark\ThemePark.Domain\obj\Release\net8.0\ref\ThemePark.Domain.dll

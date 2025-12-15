@@ -1,0 +1,88 @@
+<div class="operator-control-container">
+  <div class="header">
+    <div>
+      <h1>{{ attractionName() }}</h1>
+      <p class="subtitle">Panel de Control del Operador</p>
+    </div>
+    <button class="btn-back" (click)="goBack()">
+      Volver al Dashboard
+    </button>
+  </div>
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (successMessage()) {
+    <div class="success-message">{{ successMessage() }}</div>
+  }
+
+  <div class="control-grid">
+    <!-- Capacidad -->
+    <div class="section">
+      @if (isLoadingCapacity()) {
+        <div class="loading-message">Cargando capacidad...</div>
+      }
+
+      @if (!isLoadingCapacity() && capacity()) {
+        <app-capacity-indicator [capacity]="capacity()!"></app-capacity-indicator>
+      }
+    </div>
+
+    <!-- Control de Acceso -->
+    <div class="section">
+      <app-access-control-form
+        (onEntry)="handleEntry($event)"
+        (onExit)="handleExit($event)">
+      </app-access-control-form>
+    </div>
+
+    <!-- Reportar Incidencia -->
+    <div class="section">
+      <app-incident-form
+        (onSubmit)="handleIncidentSubmit($event)">
+      </app-incident-form>
+    </div>
+
+    <!-- Lista de Incidencias Activas -->
+    <div class="section incidents-section">
+      <div class="incidents-container">
+        <h3>Incidencias Activas</h3>
+
+        @if (isLoadingIncidents()) {
+          <div class="loading-message">Cargando incidencias...</div>
+        }
+
+        @if (!isLoadingIncidents() && incidents().length === 0) {
+          <div class="empty-incidents">
+            <p>No hay incidencias activas</p>
+          </div>
+        }
+
+        @if (!isLoadingIncidents() && incidents().length > 0) {
+          <div class="incidents-list">
+            @for (incident of incidents(); track incident.id) {
+              <div class="incident-card">
+                <div class="incident-header">
+                  <strong>{{ incident.atraccion }}</strong>
+                  @if (getScheduledDateTime(incident)) {
+                    <span class="incident-date">Programado: {{ getScheduledDateTime(incident) | date:'short' }}</span>
+                  } @else {
+                    <span class="incident-date">{{ incident.fechaCreacion | date:'short' }}</span>
+                  }
+                </div>
+                <p class="incident-description">{{ incident.descripcion }}</p>
+                <div class="incident-footer">
+                  <span class="incident-status">Estado: {{ incident.estado }}</span>
+                  <button class="btn-resolve" (click)="resolveIncident(incident.id)">
+                    Resolver
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

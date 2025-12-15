@@ -1,0 +1,84 @@
+.register-form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: white;
+  border: 5px solid #40C0CB;
+  border-radius: 30px;
+  box-shadow: 0 8px 30px rgba(64, 192, 203, 0.3);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #40C0CB;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(64, 192, 203, 0.2);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: #40C0CB;
+  font-size: 1.1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem;
+  border: 3px solid #00A8C6;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #AEE239;
+  box-shadow: 0 4px 15px rgba(174, 226, 57, 0.3);
+  transform: translateY(-2px);
+}
+
+.error-message {
+  color: #ff5252;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #AEE239 0%, #8FBE00 100%);
+  color: white;
+  border: 4px solid #8FBE00;
+  border-radius: 25px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-weight: 800;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(143, 190, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #AEE239 0%, #8FBE00 100%);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(143, 190, 0, 0.5);
+}
+
+.btn-submit:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  border-color: #999;
+  transform: none;
+}

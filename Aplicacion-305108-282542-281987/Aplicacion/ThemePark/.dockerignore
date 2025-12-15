@@ -1,0 +1,30 @@
+# Build artifacts
+**/bin/
+**/obj/
+
+# IDE and editor files
+**/.vs/
+**/.idea/
+**/.vscode/
+*.user
+*.suo
+**/*.DotSettings.user
+
+# Test results and coverage
+**/TestResults/
+**/CoverageReport/
+
+# Version control
+**/.git/
+**/.gitignore
+
+# Dependencies
+**/node_modules/
+**/packages/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other
+*.log

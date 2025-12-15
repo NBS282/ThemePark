@@ -1,0 +1,141 @@
+<div class="reward-detail-container">
+  @if (isLoading()) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Cargando recompensa...</p>
+    </div>
+  }
+
+  @if (error() && !reward()) {
+    <div class="error-container">
+      <h2>Error</h2>
+      <p>{{ error() }}</p>
+      <button class="btn btn-primary" (click)="goBack()">
+        Volver a Recompensas
+      </button>
+    </div>
+  }
+
+  @if (exchangeSuccess()) {
+    <div class="success-banner">
+      ¡Canje realizado con éxito! Redirigiendo a tu historial...
+    </div>
+  }
+
+  @if (error() && reward()) {
+    <div class="error-banner">
+      {{ error() }}
+      <button class="btn-close" (click)="error.set(null)">×</button>
+    </div>
+  }
+
+  @if (reward()) {
+    <div class="detail-card">
+      <button class="btn-back" (click)="goBack()">
+        ← Volver
+      </button>
+
+      <div class="reward-header">
+        <h1>{{ reward()!.nombre }}</h1>
+        @if (!isAvailable()) {
+          <span class="badge-unavailable">No Disponible</span>
+        }
+        @if (isAvailable() && reward()!.cantidadDisponible <= 5) {
+          <span class="badge-limited">¡Últimas {{ reward()!.cantidadDisponible }}!</span>
+        }
+      </div>
+
+      <div class="reward-body">
+        <section class="description-section">
+          <h2>Descripción</h2>
+          <p>{{ reward()!.descripcion }}</p>
+        </section>
+
+        <section class="info-section">
+          <h2>Información</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Costo en Puntos</span>
+              <span class="info-value points">{{ reward()!.costoPuntos }} pts</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Stock Disponible</span>
+              <span class="info-value">{{ reward()!.cantidadDisponible }} unidades</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Membresía Requerida</span>
+              <span class="info-value membership">{{ getMembershipLabel() }}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Estado</span>
+              <span class="info-value" [class.active]="reward()!.activa" [class.inactive]="!reward()!.activa">
+                {{ reward()!.activa ? 'Activa' : 'Inactiva' }}
+              </span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Fecha de Creación</span>
+              <span class="info-value">{{ formatDate(reward()!.fechaCreacion) }}</span>
+            </div>
+          </div>
+        </section>
+
+        @if (userPoints() > 0) {
+          <section class="user-section">
+            <div class="user-points-box">
+              <h3>Tus Puntos Disponibles</h3>
+              <p class="points-display">{{ userPoints() }} pts</p>
+              @if (!canAfford() && isAvailable()) {
+                <p class="insufficient-message">
+                  Necesitas {{ reward()!.costoPuntos - userPoints() }} puntos más para canjear esta recompensa
+                </p>
+              }
+            </div>
+          </section>
+        }
+
+        <div class="action-section">
+          @if (isAvailable() && canAfford()) {
+            <button class="btn btn-success btn-large" (click)="confirmExchange()" [disabled]="isLoading()">
+              Canjear por {{ reward()!.costoPuntos }} puntos
+            </button>
+          }
+          @if (!isAvailable()) {
+            <p class="unavailable-message">
+              Esta recompensa no está disponible en este momento
+            </p>
+          }
+          @if (isAvailable() && !canAfford() && userPoints() > 0) {
+            <p class="insufficient-message">
+              No tienes suficientes puntos para canjear esta recompensa
+            </p>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (showExchangeConfirm()) {
+    <div class="modal-overlay" (click)="cancelExchange()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Confirmar Canje</h2>
+        <div class="modal-body">
+          <p class="modal-reward-name">{{ reward()!.nombre }}</p>
+          <p>¿Estás seguro de que deseas canjear esta recompensa por <strong>{{ reward()!.costoPuntos }} puntos</strong>?</p>
+          <p class="modal-warning">Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" (click)="cancelExchange()">
+            Cancelar
+          </button>
+          <button class="btn btn-success" (click)="executeExchange()" [disabled]="isLoading()">
+            Confirmar Canje
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

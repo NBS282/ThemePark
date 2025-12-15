@@ -1,0 +1,205 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "StyleCop.Analyzers/1.2.0-beta.261": {
+        "type": "package",
+        "dependencies": {
+          "StyleCop.Analyzers.Unstable": "1.2.0.261"
+        }
+      },
+      "StyleCop.Analyzers.Unstable/1.2.0.261": {
+        "type": "package"
+      },
+      "ThemePark.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "StyleCop.Analyzers": "1.2.0-beta.261"
+        },
+        "compile": {
+          "bin/placeholder/ThemePark.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ThemePark.Domain.dll": {}
+        }
+      },
+      "ThemePark.IBusinessLogic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "StyleCop.Analyzers": "1.2.0-beta.261",
+          "ThemePark.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ThemePark.IBusinessLogic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ThemePark.IBusinessLogic.dll": {}
+        }
+      },
+      "ThemePark.IDataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "StyleCop.Analyzers": "1.2.0-beta.261",
+          "ThemePark.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ThemePark.IDataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ThemePark.IDataAccess.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StyleCop.Analyzers/1.2.0-beta.261": {
+      "sha512": "C0bMvkB95HkX2LNsKO9KbVM+BMzkHjRXxdxQ7rogiy8gtwy2yAaPNFY1+98DzlN8XUpJ/39oGX6Da7qnMp2FeA==",
+      "type": "package",
+      "path": "stylecop.analyzers/1.2.0-beta.261",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "THIRD-PARTY-NOTICES.txt",
+        "stylecop.analyzers.1.2.0-beta.261.nupkg.sha512",
+        "stylecop.analyzers.nuspec"
+      ]
+    },
+    "StyleCop.Analyzers.Unstable/1.2.0.261": {
+      "sha512": "FpInVJVmFyWIRz4oIpPpLuOkW3oFhfU4CcT7bkeZlN+iwG1T37hGVZFQ8bA2fsJv5vAHOlqLpvk7HyU3q6tF2w==",
+      "type": "package",
+      "path": "stylecop.analyzers.unstable/1.2.0.261",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "THIRD-PARTY-NOTICES.txt",
+        "analyzers/dotnet/cs/StyleCop.Analyzers.CodeFixes.dll",
+        "analyzers/dotnet/cs/StyleCop.Analyzers.dll",
+        "analyzers/dotnet/cs/de-DE/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/en-GB/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/es-MX/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/fr-FR/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/pl-PL/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/pt-BR/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/ru-RU/StyleCop.Analyzers.resources.dll",
+        "rulesets/StyleCopAnalyzersDefault.ruleset",
+        "stylecop.analyzers.unstable.1.2.0.261.nupkg.sha512",
+        "stylecop.analyzers.unstable.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "ThemePark.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ThemePark.Domain/ThemePark.Domain.csproj",
+      "msbuildProject": "../ThemePark.Domain/ThemePark.Domain.csproj"
+    },
+    "ThemePark.IBusinessLogic/1.0.0": {
+      "type": "project",
+      "path": "../ThemePark.IBusinessLogic/ThemePark.IBusinessLogic.csproj",
+      "msbuildProject": "../ThemePark.IBusinessLogic/ThemePark.IBusinessLogic.csproj"
+    },
+    "ThemePark.IDataAccess/1.0.0": {
+      "type": "project",
+      "path": "../ThemePark.IDataAccess/ThemePark.IDataAccess.csproj",
+      "msbuildProject": "../ThemePark.IDataAccess/ThemePark.IDataAccess.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "StyleCop.Analyzers >= 1.2.0-beta.261",
+      "ThemePark.Domain >= 1.0.0",
+      "ThemePark.IBusinessLogic >= 1.0.0",
+      "ThemePark.IDataAccess >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Nicob_86fbhyf\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.BusinessLogic\\ThemePark.BusinessLogic.csproj",
+      "projectName": "ThemePark.BusinessLogic",
+      "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.BusinessLogic\\ThemePark.BusinessLogic.csproj",
+      "packagesPath": "C:\\Users\\Nicob_86fbhyf\\.nuget\\packages\\",
+      "outputPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.BusinessLogic\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Nicob_86fbhyf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj": {
+              "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.Domain\\ThemePark.Domain.csproj"
+            },
+            "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\ThemePark.IBusinessLogic.csproj": {
+              "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IBusinessLogic\\ThemePark.IBusinessLogic.csproj"
+            },
+            "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IDataAccess\\ThemePark.IDataAccess.csproj": {
+              "projectPath": "E:\\Facultad\\DA2\\305108-282542-281987\\ThemePark\\ThemePark.IDataAccess\\ThemePark.IDataAccess.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "StyleCop.Analyzers": {
+            "target": "Package",
+            "version": "[1.2.0-beta.261, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+<div class="rewards-list-container">
+  <div class="page-header">
+    <h1>Recompensas Disponibles</h1>
+    <p class="page-subtitle">Canjea tus puntos por increíbles premios</p>
+
+    <div class="points-display">
+      <div class="points-card">
+        <span class="points-icon">💎</span>
+        <div class="points-info">
+          <p class="points-label">Puntos Disponibles</p>
+          <p class="points-value">{{ userPoints() }}</p>
+        </div>
+      </div>
+      <div class="points-card secondary">
+        <span class="points-icon">⭐</span>
+        <div class="points-info">
+          <p class="points-label">Puntos Acumulados</p>
+          <p class="points-value">{{ userTotalPoints() }}</p>
+        </div>
+      </div>
+      <div class="points-card secondary">
+        <span class="points-icon">🎁</span>
+        <div class="points-info">
+          <p class="points-label">Puntos Gastados</p>
+          <p class="points-value">{{ userSpentPoints() }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-secondary" (click)="viewHistory()">
+        Ver Mi Historial
+      </button>
+      @if (isAdmin()) {
+        <button class="btn btn-primary" (click)="goToAdminPanel()">
+          Gestión de Recompensas
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (exchangeSuccess()) {
+    <div class="success-banner">
+      ¡Canje realizado con éxito! Tu recompensa ha sido procesada.
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error-banner">
+      {{ error() }}
+      <button class="btn-close" (click)="error.set(null)">×</button>
+    </div>
+  }
+
+  @if (isLoading()) {
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Cargando recompensas...</p>
+    </div>
+  }
+
+  @if (!isLoading() && rewards().length === 0 && !error()) {
+    <div class="empty-state">
+      <h2>No hay recompensas disponibles</h2>
+      <p>En este momento no tienes recompensas disponibles para canjear.</p>
+      <p>Acumula más puntos visitando atracciones o revisa más tarde.</p>
+    </div>
+  }
+
+  @if (!isLoading() && rewards().length > 0) {
+    <div class="rewards-grid">
+      @for (reward of rewards(); track reward.id) {
+        <app-reward-card
+          [reward]="reward"
+          [userPoints]="userPoints()"
+          [showActions]="false"
+          (onView)="viewReward($event)"
+          (onExchange)="confirmExchange($event)"
+        />
+      }
+    </div>
+  }
+
+  @if (rewardToExchange()) {
+    <div class="modal-overlay" (click)="cancelExchange()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Confirmar Canje</h2>
+        <div class="modal-body">
+          <p class="modal-reward-name">{{ rewardToExchange()!.nombre }}</p>
+          <p>¿Estás seguro de que deseas canjear esta recompensa por <strong>{{ rewardToExchange()!.costoPuntos }} puntos</strong>?</p>
+          <p class="modal-warning">Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" (click)="cancelExchange()">
+            Cancelar
+          </button>
+          <button class="btn btn-success" (click)="executeExchange()" [disabled]="isLoading()">
+            Confirmar Canje
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

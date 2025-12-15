@@ -1,0 +1,128 @@
+<div class="public-attractions-container">
+  <div class="header">
+    <h1>Atracciones del Parque</h1>
+    <p class="subtitle">Descubre todas nuestras atracciones y su disponibilidad</p>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando atracciones...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (!isLoading() && attractionsWithCapacity().length === 0) {
+    <div class="empty-message">
+      <p>No hay atracciones disponibles en este momento</p>
+    </div>
+  }
+
+  @if (!isLoading() && attractionsWithCapacity().length > 0) {
+    <div class="attractions-grid">
+      @for (item of attractionsWithCapacity(); track item.attraction.nombre) {
+        <div class="attraction-card" (click)="viewDetails(item)">
+          <div class="card-header">
+            <h3>{{ item.attraction.nombre }}</h3>
+            @if (item.attraction.tieneIncidencia) {
+              <span class="status-badge status-closed">Cerrada</span>
+            } @else {
+              <span class="status-badge status-open">Abierta</span>
+            }
+          </div>
+
+          <div class="card-body">
+            <div class="info-row">
+              <span class="label">Tipo:</span>
+              <span class="value">{{ getTipoLabel(item.attraction.tipo) }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Edad Mínima:</span>
+              <span class="value">{{ item.attraction.edadMinima }} años</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Capacidad:</span>
+              <span class="value">{{ item.attraction.capacidadMaxima }}</span>
+            </div>
+
+            @if (item.capacity) {
+              <div class="capacity-mini">
+                <div class="capacity-bar-mini">
+                  <div
+                    class="capacity-fill-mini"
+                    [style.width.%]="item.capacity.porcentajeOcupacion"
+                    [ngClass]="{
+                      'fill-low': item.capacity.porcentajeOcupacion < 40,
+                      'fill-medium': item.capacity.porcentajeOcupacion >= 40 && item.capacity.porcentajeOcupacion < 70,
+                      'fill-high': item.capacity.porcentajeOcupacion >= 70 && item.capacity.porcentajeOcupacion < 90,
+                      'fill-full': item.capacity.porcentajeOcupacion >= 90
+                    }">
+                  </div>
+                </div>
+                <span class="capacity-text-mini">
+                  {{ item.capacity.aforoActual }} / {{ item.capacity.capacidadMaxima }}
+                </span>
+              </div>
+            }
+          </div>
+
+          <div class="card-footer">
+            <button class="btn-details">Ver Detalles</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Modal de detalles -->
+  @if (selectedAttraction()) {
+    <div class="modal-overlay" (click)="closeDetails()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>{{ selectedAttraction()!.attraction.nombre }}</h2>
+          <button class="btn-close" (click)="closeDetails()">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="detail-section">
+            <h3>Información</h3>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <strong>Tipo:</strong>
+                <span>{{ getTipoLabel(selectedAttraction()!.attraction.tipo) }}</span>
+              </div>
+              <div class="detail-item">
+                <strong>Edad Mínima:</strong>
+                <span>{{ selectedAttraction()!.attraction.edadMinima }} años</span>
+              </div>
+              <div class="detail-item">
+                <strong>Capacidad Máxima:</strong>
+                <span>{{ selectedAttraction()!.attraction.capacidadMaxima }}</span>
+              </div>
+              <div class="detail-item">
+                <strong>Estado:</strong>
+                @if (selectedAttraction()!.attraction.tieneIncidencia) {
+                  <span class="status-badge status-closed">Cerrada</span>
+                } @else {
+                  <span class="status-badge status-open">Abierta</span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Descripción</h3>
+            <p>{{ selectedAttraction()!.attraction.descripcion }}</p>
+          </div>
+
+          @if (selectedAttraction()!.capacity) {
+            <div class="detail-section">
+              <h3>Disponibilidad Actual</h3>
+              <app-capacity-indicator [capacity]="selectedAttraction()!.capacity!"></app-capacity-indicator>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

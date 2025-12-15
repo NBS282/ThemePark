@@ -1,0 +1,48 @@
+<div class="profile-view-container">
+  @if (user()) {
+    <div class="profile-card">
+      <h2>Mi Perfil</h2>
+
+      <div class="profile-info">
+        <div class="info-row">
+          <span class="label">Código de Identificación:</span>
+          <span class="value">{{ user()!.codigoIdentificacion }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Nombre:</span>
+          <span class="value">{{ user()!.nombre }} {{ user()!.apellido }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Email:</span>
+          <span class="value">{{ user()!.email }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Fecha de Nacimiento:</span>
+          <span class="value">{{ user()!.fechaNacimiento }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Nivel de Membresía:</span>
+          <span class="value">{{ user()!.nivelMembresia || 'N/A' }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Roles:</span>
+          <span class="value">{{ uniqueRoles() }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Fecha de Registro:</span>
+          <span class="value">{{ user()!.fechaRegistro }}</span>
+        </div>
+      </div>
+
+      <button class="btn-edit" (click)="editProfile()">Editar Perfil</button>
+    </div>
+  } @else {
+    <p>No hay información de usuario disponible</p>
+  }
+</div>

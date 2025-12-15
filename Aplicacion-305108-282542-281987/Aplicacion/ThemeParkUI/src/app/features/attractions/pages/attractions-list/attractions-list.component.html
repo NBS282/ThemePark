@@ -1,0 +1,84 @@
+<div class="attractions-list-container">
+  <div class="header">
+    <h1>Gestión de Atracciones</h1>
+    <button class="btn-create" (click)="createNew()">
+      Nueva Atracción
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-message">Cargando atracciones...</div>
+  }
+
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+
+  @if (!isLoading() && attractions().length === 0) {
+    <div class="empty-message">
+      <p>No hay atracciones registradas</p>
+      <button class="btn-create-empty" (click)="createNew()">
+        Crear primera atracción
+      </button>
+    </div>
+  }
+
+  @if (!isLoading() && attractions().length > 0) {
+    <div class="attractions-table-container">
+      <table class="attractions-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Edad Mínima</th>
+            <th>Capacidad</th>
+            <th>Estado</th>
+            <th>Fecha Creación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (attraction of attractions(); track attraction.nombre) {
+            <tr>
+              <td class="nombre-cell">{{ attraction.nombre }}</td>
+              <td>{{ getTipoLabel(attraction.tipo) }}</td>
+              <td>{{ attraction.edadMinima }} años</td>
+              <td>{{ attraction.capacidadMaxima }}</td>
+              <td>
+                @if (attraction.tieneIncidencia) {
+                  <span class="status-badge status-closed">Cerrada</span>
+                } @else {
+                  <span class="status-badge status-open">Abierta</span>
+                }
+              </td>
+              <td>{{ attraction.fechaCreacion | date:'short' }}</td>
+              <td class="actions-cell">
+                <button class="btn-view" (click)="viewAttraction(attraction.nombre)">
+                  Ver/Editar
+                </button>
+                <button class="btn-delete" (click)="confirmDelete(attraction.nombre)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  <!-- Modal de confirmación de eliminación -->
+  @if (attractionToDelete()) {
+    <div class="modal-overlay" (click)="cancelDelete()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Confirmar Eliminación</h2>
+        <p>¿Estás seguro de que deseas eliminar la atracción "{{ attractionToDelete() }}"?</p>
+        <p class="warning">Esta acción no se puede deshacer.</p>
+        <div class="modal-actions">
+          <button class="btn-cancel" (click)="cancelDelete()">Cancelar</button>
+          <button class="btn-confirm-delete" (click)="deleteAttraction()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

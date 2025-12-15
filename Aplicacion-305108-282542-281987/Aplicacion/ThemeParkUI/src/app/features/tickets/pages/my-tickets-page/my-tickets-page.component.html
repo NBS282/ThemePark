@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="header">
+    <h2>Mis Tickets</h2>
+    <a routerLink="/tickets/purchase" class="btn btn-primary">Comprar Ticket</a>
+  </div>
+
+  @if (isLoading) {
+    <div class="loading">Cargando tickets...</div>
+  }
+
+  @if (error) {
+    <div class="alert alert-error">
+      {{ error }}
+    </div>
+  }
+
+  @if (!isLoading && !error) {
+    @if (tickets.length === 0) {
+      <div class="empty-state">
+        <p>No tienes tickets comprados.</p>
+        <a routerLink="/tickets/purchase" class="btn btn-primary">Comprar tu primer ticket</a>
+      </div>
+    } @else {
+      <div class="tickets-grid">
+        @for (ticket of tickets; track ticket.codigoQR) {
+          <div class="ticket-card">
+            <div class="ticket-header">
+              <span class="ticket-type" [class.general]="ticket.tipoEntrada === 'general'" [class.evento]="ticket.tipoEntrada === 'evento'">
+                {{ ticket.tipoEntrada === 'general' ? 'General' : 'Evento Especial' }}
+              </span>
+            </div>
+            <div class="ticket-body">
+              <div class="ticket-info">
+                <label>Fecha de Visita</label>
+                <p>{{ ticket.fechaVisita }}</p>
+              </div>
+              <div class="ticket-info">
+                <label>Fecha de Compra</label>
+                <p>{{ ticket.fechaCompra | date:'short' }}</p>
+              </div>
+              <div class="ticket-info">
+                <label>Código QR</label>
+                <p class="qr-code">{{ ticket.codigoQR }}</p>
+              </div>
+              <div class="ticket-note">
+                <span class="note-icon">ℹ️</span>
+                <p>Tu código de identificación también funciona como código NFC para acceder a las atracciones.</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>
